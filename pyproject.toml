@@ -1,0 +1,21 @@
+[project]
+name = "twv-viewer"
+version = "1.0.0"
+description = "macOS viewer and converter for Aresis Tweez .twv video files"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+    "PySide6-Essentials>=6.6",
+    "numpy>=1.24",
+    "opencv-python-headless>=4.8",
+]
+
+[dependency-groups]
+build = [
+    "pyinstaller>=6.3",
+]
+
+[tool.uv]
+# Flat-layout app, not an installable package; run with `uv run main.py`.
+package = false

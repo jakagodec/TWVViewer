@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# PyInstaller output
+build/
+dist/
+
+# macOS
+.DS_Store
+
+# Video data
+*.twv
+*.mp4
+*.avi
+*.mov
+
+# Claude Code local settings
+.claude/settings.local.json

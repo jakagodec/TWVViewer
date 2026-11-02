@@ -1,0 +1,27 @@
+#!/bin/bash
+# Shortcut launcher for TWV Viewer. Works from any directory and when
+# symlinked onto your PATH, e.g.:
+#   ln -s "$PWD/twv-viewer" ~/.local/bin/twv-viewer
+#   twv-viewer path/to/video.twv
+set -euo pipefail
+
+# Resolve symlinks so we find the repo even when called via ~/.local/bin.
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+REPO_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+# Make relative file arguments absolute before uv changes directory.
+ARGS=()
+for arg in "$@"; do
+    if [[ "$arg" != -* && -e "$arg" ]]; then
+        ARGS+=("$(cd "$(dirname "$arg")" && pwd)/$(basename "$arg")")
+    else
+        ARGS+=("$arg")
+    fi
+done
+
+exec uv run --quiet --project "$REPO_DIR" "$REPO_DIR/main.py" ${ARGS[@]+"${ARGS[@]}"}
