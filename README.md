@@ -88,6 +88,7 @@ Services database:
 | `video_label.py` | Aspect-preserving video display widget |
 | `build.spec` | PyInstaller spec, including `.twv` document-type registration |
 | `twv-viewer` | Launcher script (symlink-safe) |
+| `make_icon.py` | Draws the eye icon and writes `icon.icns` / `icon.png` (`uv run make_icon.py`) |
 
 ## Dependency management
 

@@ -46,7 +46,7 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='TWV Viewer.app',
-    icon=None,
+    icon='icon.icns',
     bundle_identifier='org.twvviewer.app',
     info_plist={
         'CFBundleName': 'TWV Viewer',
